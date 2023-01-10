@@ -21,7 +21,7 @@
                                 <td>{{ $project->subject }}</td>
                                 <td>
                                     <a class="btn btn-success" href="{{ route('admin.projects.show', $project->slug) }}">
-                                        <i class="fa-solid fa-eye"></i>
+                                        {{-- <i class="fa-solid fa-eye"></i> --}}
                                     </a>
                                 </td>
                             </tr>
