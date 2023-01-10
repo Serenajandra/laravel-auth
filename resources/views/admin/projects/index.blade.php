@@ -20,7 +20,8 @@
                                 <td>{{ $project->created_at }}</td>
                                 <td>{{ $project->subject }}</td>
                                 <td>
-                                    <a class="btn btn-success" href="{{ route('admin.projects.show', $project->slug) }}">
+                                    <a class="btn btn-success"
+                                        href="{{ route('admin.projects.show', $project->slug) }}">{{ $project->slug }}
                                         {{-- <i class="fa-solid fa-eye"></i> --}}
                                     </a>
                                 </td>

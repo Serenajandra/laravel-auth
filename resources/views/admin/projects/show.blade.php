@@ -1,6 +1,12 @@
 @extends('layouts.admin')
 @section('content')
     <div class="container">
-        <h3>{{ $project->title }}</h3>
+        <h2 class="text-center m-3">{{ $project->title }}</h2>
+        <h4 class="mt-3">{{ $project->subject }}</h4>
+        <p> {{ $project->presentation }}</p>
+        <h5>Contenuto</h5>
+        <p>{{ $project->content }}</p>
+
+
     </div>
 @endsection
