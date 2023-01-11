@@ -6,7 +6,7 @@
         <p> {{ $project->presentation }}</p>
         <h5>Contenuto</h5>
         <p>{{ $project->content }}</p>
-
+        <a href="{{ route('admin.projects.index') }}">Torna alla lista dei progetti</a>
 
     </div>
 @endsection
