@@ -1,7 +1,9 @@
 @extends('layouts.admin')
 @section('content')
     <div class="container">
-        <form action="{{ route('admin.projects.edit') }}" method="POST">
+        <h2>Modifica il progetto</h2>
+        <form action="{{ route('admin.projects.edit', $project->slug) }}" method="POST">
+
             @csrf
             @method('PUT')
             <div class="form-goup">

@@ -33,8 +33,9 @@
                                         href="{{ route('admin.projects.show', $project->slug) }}">Dettagli
                                         {{-- <i class="fa-solid fa-eye"></i> --}}
                                     </a>
-                                    <a class="btn btn-primary" href="">Modifica</a>
-                                    <form action="{{ route('admin.projects.edit', $project->slug) }}" method="POST">
+                                    <a class="btn btn-primary"
+                                        href="{{ route('admin.projects.edit', $project->slug) }}">Modifica</a>
+                                    <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger" type="submit">Cancella</button>
