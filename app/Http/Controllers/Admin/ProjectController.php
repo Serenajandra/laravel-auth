@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -40,6 +41,7 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         // dd($request->all());
+        // dd($request)->validated();
         $form_data = $request->validated();
         // $form_data['slug'] = Str::slug($form_data['title']);
         $form_data['slug'] = Project::generateSlug($form_data['title']);
@@ -81,6 +83,13 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
+        // dd($request->all());
+        // dd($request)->validated();
+        // $form_data = $request->all();
+        $form_data = $request->validated();
+        $form_data['slug'] = Project::generateSlug($form_data['title']);
+        $project->update($form_data);
+        return redirect()->route('admin.projects.index')->with('message', "Il progetto è stato creato correttamente");
     }
 
     /**
@@ -91,6 +100,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('admin.projects.index')->with('message', "Progetto cancellato con successo.");
     }
 }

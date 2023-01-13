@@ -1,16 +1,16 @@
 @extends('layouts.admin')
 @section('content')
     <div class="container">
-        <h2 class="bg-success">Lista dei progetti</h2>
+        <h2 class="bg-light border mt-3 text-center py-3">Lista dei progetti</h2>
         <div class="row justify-content-center">
-            <div>
-                <a class="btn btn-success position-absolute end-0 mx-4" href="{{ route('admin.projects.create') }}">Nuovo
+            <div class="text-end mx-4">
+                <a class="btn btn-success" href="{{ route('admin.projects.create') }}">Nuovo
                     progetto</a>
             </div>
-            <div class="col-8">
+            <div class="mt-4">
                 @if (session('message'))
                     <div class="alert alert-success">
-                        {{ session('messagge') }}
+                        {{ session('message') }}
                     </div>
                 @endif
                 <table class="table">
@@ -19,26 +19,26 @@
                             <th scope="col">Titolo</th>
                             <th scope="col">Data di creazione</th>
                             <th scope="col">Argomenti</th>
-                            <th scope="col">Azioni</th>
+                            <th scope="col" style="width: 20rem" class="text-center">Azioni</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($projects as $project)
                             <tr>
-                                <th scope="row">{{ $project->title }}</th>
+                                <td scope="row">{{ $project->title }}</td>
                                 <td>{{ $project->created_at }}</td>
                                 <td>{{ $project->subject }}</td>
-                                <td>
-                                    <a class="btn btn-warning"
+                                <td style="width: 20rem">
+                                    <a class="btn btn-warning p-1"
                                         href="{{ route('admin.projects.show', $project->slug) }}">Dettagli
                                         {{-- <i class="fa-solid fa-eye"></i> --}}
                                     </a>
-                                    <a class="btn btn-primary"
+                                    <a class="btn btn-primary p-1"
                                         href="{{ route('admin.projects.edit', $project->slug) }}">Modifica</a>
                                     <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-danger" type="submit">Cancella</button>
+                                        <button class="btn btn-danger p-1" type="submit">Cancella</button>
                                     </form>
                                 </td>
                             </tr>
