@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title', 150)->unique();
             $table->string('subject');
             $table->text('presentation');
+            $table->text('image')->nullable();
             $table->text('content');
             $table->string('slug');
             $table->timestamps();
