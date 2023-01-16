@@ -30,7 +30,7 @@
                                 <td>{{ $project->created_at }}</td>
                                 <td>{{ $project->subject }}</td>
                                 <td></td>
-                                <td>
+                                <td class="">
                                     <a class="btn btn-warning p-1"
                                         href="{{ route('admin.projects.show', $project->slug) }}">
                                         <i class="fa-solid fa-eye"></i>
@@ -38,7 +38,8 @@
                                     <a class="btn btn-primary p-1"
                                         href="{{ route('admin.projects.edit', $project->slug) }}"><i
                                             class="fa-solid fa-pen-to-square"></i></a>
-                                    <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST">
+                                    <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST"
+                                        class="d-inline-block">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger p-1" type="submit"><i

@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Auth\Events\Validated;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -49,6 +50,13 @@ class ProjectController extends Controller
         // $project->fill($form_data);
         // $project->save();
         $project = Project::create($form_data);
+        if (array_key_exists('image', $form_data)) {
+            // if ($request->hasFile('cover_image'))
+            $path = Storage::put('post_image', $request->cover_image);
+            dd($path);
+            $form_data['image'] = $path;
+        }
+
         return redirect()->route('admin.projects.index')->with('message', 'Il progetto è stato creato correttamente');
     }
 
